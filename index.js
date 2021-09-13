@@ -1,4 +1,3 @@
-;
 
 const generateId = () => (Math.random() + 1);
 const firstBook = new Book('Crime and Punishment', 'Dostoyesky');
@@ -13,10 +12,12 @@ function Book(title, author, id) {
 
 Book.prototype = {
   ...Book.prototype,
+
   addBookToArray() {
     bookArray.push(this)
   }
-}
+
+};
 
 const form = document.querySelector("#book-form");
 
@@ -29,22 +30,42 @@ form.addEventListener("submit", function(e){
 })
 
 
+
+
+
+
 const div = document.querySelector(".book-collection")
+
+
 
 function displayBook(book){
   let titleP = document.createElement("p");
   titleP.appendChild(document.createTextNode(`Title: ${book.title}`));
   let authorP = document.createElement("p");
   authorP.appendChild(document.createTextNode(`Author: ${book.author}`));
-  let deleteBookButton = document.createElement("button")
+  let deleteBookButton = document.createElement("button");
+  deleteBookButton.id = "delete-button";
   deleteBookButton.innerText = "delete";
 
-  div.appendChild(titleP);
-  div.appendChild(authorP);
-  div.appendChild(deleteBookButton);
+  deleteBookButton.addEventListener("click", function(){
+    let bookToDelete = document.querySelector(`#${book.author}`);
+    bookArray.splice(bookArray.indexOf(book), 1);
+     bookToDelete.remove();
+    return bookArray;
+  })
+
+  let divBook = document.createElement("div");
+  divBook.id = book.author;
+  divBook.appendChild(titleP);
+  divBook.appendChild(authorP);
+  divBook.appendChild(deleteBookButton);
+  div.appendChild(divBook);
 } 
 
 
 for (let i= 0; i < bookArray.length; i++) {
   displayBook(bookArray[i]);
+  console.log(bookArray.indexOf(bookArray[i]))
+
 }
+
