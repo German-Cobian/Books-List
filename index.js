@@ -4,12 +4,8 @@ const firstBook = new Book('Crime and Punishment', 'Dostoyesky');
 const secondBook = new Book('Dawn', 'Nieszche');
 let bookArray = [firstBook, secondBook];
 
-
-
-
 function addBooksLs(book){
   let books;
-
   if(localStorage.getItem("books") === null){
     books = bookArray;
   } else {
@@ -20,6 +16,14 @@ function addBooksLs(book){
   localStorage.setItem("books", JSON.stringify(books));
 }
 
+function deleteBookLS(myBook) {
+  
+  let books = JSON.parse(localStorage.getItem('books'));
+  let bookIndex = books.findIndex((book) => myBook.title === book.title);
+  books.splice(bookIndex, 1);
+  localStorage.setItem('books', JSON.stringify(books));
+ 
+};
 
 function Book(title, author, id) {
   this.title = title;
@@ -60,8 +64,13 @@ function displayBook(book){
   deleteBookButton.id = "delete-button";
   deleteBookButton.innerText = "delete";
 
+  
+
   deleteBookButton.addEventListener("click", function(){
-    book.delete();
+    // book.delete();
+    deleteBookLS(book);
+    let bookToDelete = document.querySelector(`#${book.author}`);
+    bookToDelete.remove();
   })
 
   let divBook = document.createElement("div");
@@ -73,6 +82,7 @@ function displayBook(book){
 } 
 
 function getBooksLs(){
+  let books;
   if(localStorage.getItem("books")=== null){
     books = bookArray;
   } else {
