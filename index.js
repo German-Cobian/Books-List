@@ -2,7 +2,24 @@
 const generateId = () => (Math.random() + 1);
 const firstBook = new Book('Crime and Punishment', 'Dostoyesky');
 const secondBook = new Book('Dawn', 'Nieszche');
-let bookArray = [firstBook, secondBook]
+let bookArray = [firstBook, secondBook];
+
+
+
+
+function addBooksLs(book){
+  let books;
+
+  if(localStorage.getItem("books") === null){
+    books = bookArray;
+  } else {
+    books = JSON.parse(localStorage.getItem("books"));
+
+  }
+  books.push(book);
+  localStorage.setItem("books", JSON.stringify(books));
+}
+
 
 function Book(title, author, id) {
   this.title = title;
@@ -23,12 +40,14 @@ Book.prototype.delete = function() {
 
 const form = document.querySelector("#book-form");
 
+
 form.addEventListener("submit", function(e){
-  e.preventDefault();
   let author = form.elements.author.value;
   let title = form.elements.title.value;
   let newBook = new Book (title, author);
-  newBook.addBookToArray();
+  // newBook.addBookToArray();
+  addBooksLs(newBook)
+
 })
 const div = document.querySelector(".book-collection");
 
@@ -53,7 +72,20 @@ function displayBook(book){
   div.appendChild(divBook);
 } 
 
-for (let i= 0; i < bookArray.length; i++) {
-  displayBook(bookArray[i]);
+function getBooksLs(){
+  if(localStorage.getItem("books")=== null){
+    books = bookArray;
+  } else {
+    books = JSON.parse(localStorage.getItem("books"));
+  }
+ 
+  for (let i= 0; i < books.length; i++) {
+    displayBook(books[i]);
+  }  
+  
+  
 }
+
+getBooksLs();
+
 
