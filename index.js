@@ -10,14 +10,16 @@ function Book(title, author, id) {
   this.id = generateId();   
 }
 
-Book.prototype = {
-  ...Book.prototype,
+Book.prototype.addBookToArray = function() {
+  bookArray.push(this);
+}
 
-  addBookToArray() {
-    bookArray.push(this)
-  }
-
-};
+Book.prototype.delete = function() {
+  let bookToDelete = document.querySelector(`#${this.author}`);
+  bookArray.splice(bookArray.indexOf(this), 1);
+  bookToDelete.remove();
+  return bookArray;
+}
 
 const form = document.querySelector("#book-form");
 
@@ -28,15 +30,7 @@ form.addEventListener("submit", function(e){
   let newBook = new Book (title, author);
   newBook.addBookToArray();
 })
-
-
-
-
-
-
-const div = document.querySelector(".book-collection")
-
-
+const div = document.querySelector(".book-collection");
 
 function displayBook(book){
   let titleP = document.createElement("p");
@@ -48,10 +42,7 @@ function displayBook(book){
   deleteBookButton.innerText = "delete";
 
   deleteBookButton.addEventListener("click", function(){
-    let bookToDelete = document.querySelector(`#${book.author}`);
-    bookArray.splice(bookArray.indexOf(book), 1);
-     bookToDelete.remove();
-    return bookArray;
+    book.delete();
   })
 
   let divBook = document.createElement("div");
@@ -62,10 +53,7 @@ function displayBook(book){
   div.appendChild(divBook);
 } 
 
-
 for (let i= 0; i < bookArray.length; i++) {
   displayBook(bookArray[i]);
-  console.log(bookArray.indexOf(bookArray[i]))
-
 }
 
