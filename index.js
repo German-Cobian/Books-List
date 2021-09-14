@@ -10,7 +10,7 @@ function Book(title, author, isbn) {
 function Display() {}
 
 // Add Book To List
-Display.prototype.addBookToList = function(book){
+Display.prototype.addBookToList = function (book) {
   const list = document.getElementById('book-list');
   // Create tr element
   const bookItem = document.createElement('div');
@@ -23,26 +23,26 @@ Display.prototype.addBookToList = function(book){
     <button><a href="#" class="delete">Remove</a></button>
   `;
   list.appendChild(bookItem);
-}
+};
 
 // Delete Book
-Display.prototype.deleteBook = function(target){
-  if(target.className === 'delete') {
+Display.prototype.deleteBook = function (target) {
+  if (target.className === 'delete') {
     target.parentElement.parentElement.remove();
   }
-}
+};
 
 // Clear Fields
-Display.prototype.clearFields = function() {
+Display.prototype.clearFields = function () {
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
   document.getElementById('isbn').value = '';
-}
+};
 
 // Obtain books from local storage on page load
 function getBooks() {
   let books;
-  if(localStorage.getItem('books') === null) {
+  if (localStorage.getItem('books') === null) {
     books = [];
   } else {
     books = JSON.parse(localStorage.getItem('books'));
@@ -52,8 +52,8 @@ function getBooks() {
 // Display books in local storage
 function displayBooks() {
   const books = getBooks();
-  books.forEach(function(book) {
-    const display  = new Display;
+  books.forEach((book) => {
+    const display = new Display();
     // Add book to Display
     display.addBookToList(book);
   });
@@ -67,22 +67,22 @@ function addBook(book) {
 // Remove books from local storage
 function removeBook(isbn) {
   const books = getBooks();
-  books.forEach(function(book, index) {
-      if (book.isbn === isbn) {
-          books.splice(index, 1);
-      }
-  })
+  books.forEach((book, index) => {
+    if (book.isbn === isbn) {
+      books.splice(index, 1);
+    }
+  });
   localStorage.setItem('books', JSON.stringify(books));
 }
 // DOM load Event
 document.addEventListener('DOMContentLoaded', displayBooks);
 
 // Event Listener for add book
-document.getElementById('book-form').addEventListener('submit', function(e){
+document.getElementById('book-form').addEventListener('submit', (e) => {
   // Get form values
-  const title = document.getElementById('title').value,
-        author = document.getElementById('author').value,
-        isbn = document.getElementById('isbn').value
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const isbn = document.getElementById('isbn').value;
   // Instantiate book
   const book = new Book(title, author, isbn);
   // Instantiate Display
@@ -97,8 +97,7 @@ document.getElementById('book-form').addEventListener('submit', function(e){
 });
 
 // Event Listener for delete
-document.getElementById('book-list').addEventListener('click', function(e){
-
+document.getElementById('book-list').addEventListener('click', (e) => {
   // Instantiate Display
   const display = new Display();
 
