@@ -9,7 +9,7 @@ class Book {
 }
 
 // Display class
-class Display() {
+class Display {
 
 // Add Book To List
   addBook(book) {
@@ -35,7 +35,7 @@ deleteBook(target) {
 };
 
 // Clear Fields
-clearFields = function () {
+clearFields() {
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
   document.getElementById('isbn').value = '';
@@ -43,19 +43,22 @@ clearFields = function () {
 }
 
 
-// Obtain books from local storage on page load
-function getBooks() {
-  let books;
-  if (localStorage.getItem('books') === null) {
-    books = [];
-  } else {
-    books = JSON.parse(localStorage.getItem('books'));
+
+// Class local storage
+
+class MylocalStorage {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+    return books;
   }
-  return books;
-}
-// Display books in local storage
-function displayBooks() {
-  const books = getBooks();
+  // Display books in local storage
+static displayBooks() {
+  const books = MylocalStorage.getBooks();
   books.forEach((book) => {
     const display = new Display();
     // Add book to Display
@@ -63,20 +66,25 @@ function displayBooks() {
   });
 }
 // Add books to local storage
-function addBook(book) {
-  const books = getBooks();
+static addBook(book) {
+  const books = MylocalStorage.getBooks();
   books.push(book);
   localStorage.setItem('books', JSON.stringify(books));
 }
 // Remove books from local storage
-function removeBook(isbn) {
-  let books = getBooks();
+static removeBook(isbn) {
+  let books = MylocalStorage.getBooks();
   const filteredBooks = books.filter((book) => book.isbn !== isbn);
   books = filteredBooks;
   localStorage.setItem('books', JSON.stringify(books));
 }
+}
+
+
+
+
 // DOM load Event
-document.addEventListener('DOMContentLoaded', displayBooks);
+document.addEventListener('DOMContentLoaded', MylocalStorage.displayBooks);
 
 // Event Listener for add book
 document.getElementById('book-form').addEventListener('submit', (e) => {
@@ -91,7 +99,7 @@ document.getElementById('book-form').addEventListener('submit', (e) => {
   // Add book to list
   display.addBookToList(book);
   // add to local storage
-  addBook(book);
+  MylocalStorage.addBook(book);
   // Clear fields
   display.clearFields();
   e.preventDefault();
@@ -106,7 +114,7 @@ document.getElementById('book-list').addEventListener('click', (e) => {
   display.deleteBook(e.target);
 
   // Remove from localStorage
-  removeBook(e.target.parentElement.previousElementSibling.textContent);
+  MylocalStorage.removeBook(e.target.parentElement.previousElementSibling.textContent);
 
   e.preventDefault();
 });
