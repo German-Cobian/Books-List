@@ -66,12 +66,9 @@ function addBook(book) {
 }
 // Remove books from local storage
 function removeBook(isbn) {
-  const books = getBooks();
-  books.forEach((book, index) => {
-    if (book.isbn === isbn) {
-      books.splice(index, 1);
-    }
-  });
+  let books = getBooks();
+  const filteredBooks = books.filter((book) => book.isbn !== isbn);
+  books = filteredBooks;
   localStorage.setItem('books', JSON.stringify(books));
 }
 // DOM load Event
