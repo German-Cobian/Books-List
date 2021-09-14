@@ -1,4 +1,4 @@
-// eslint-disable-next-line max-classes-per-file
+/* eslint max-classes-per-file: ["error", 5] */
 
 // Book Constructor
 
