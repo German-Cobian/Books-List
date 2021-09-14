@@ -95,3 +95,18 @@ document.getElementById('book-form').addEventListener('submit', function(e){
   display.clearFields();
   e.preventDefault();
 });
+
+// Event Listener for delete
+document.getElementById('book-list').addEventListener('click', function(e){
+
+  // Instantiate Display
+  const display = new Display();
+
+  // Delete book
+  display.deleteBook(e.target);
+
+  // Remove from localStorage
+  removeBook(e.target.parentElement.previousElementSibling.textContent);
+
+  e.preventDefault();
+});
