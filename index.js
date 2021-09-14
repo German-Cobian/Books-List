@@ -39,6 +39,43 @@ Display.prototype.clearFields = function() {
   document.getElementById('isbn').value = '';
 }
 
+// Obtain books from local storage on page load
+function getBooks() {
+  let books;
+  if(localStorage.getItem('books') === null) {
+    books = [];
+  } else {
+    books = JSON.parse(localStorage.getItem('books'));
+  }
+  return books;
+}
+// Display books in local storage
+function displayBooks() {
+  const books = getBooks();
+  books.forEach(function(book) {
+    const display  = new Display;
+    // Add book to Display
+    display.addBookToList(book);
+  });
+}
+// Add books to local storage
+function addBook(book) {
+  const books = getBooks();
+  books.push(book);
+  localStorage.setItem('books', JSON.stringify(books));
+}
+// Remove books from local storage
+function removeBook(isbn) {
+  const books = getBooks();
+  books.forEach(function(book, index) {
+      if (book.isbn === isbn) {
+          books.splice(index, 1);
+      }
+  })
+  localStorage.setItem('books', JSON.stringify(books));
+}
+// DOM load Event
+document.addEventListener('DOMContentLoaded', displayBooks);
 
 // Event Listener for add book
 document.getElementById('book-form').addEventListener('submit', function(e){
