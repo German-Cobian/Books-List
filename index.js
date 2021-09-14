@@ -1,13 +1,14 @@
 const generateId = () => (Math.random() + 1).toString(36).substring(7);
+
 const firstBook = new Book('Crime and Punishment', 'Dostoyesky');
 const secondBook = new Book('Dawn', 'Nieszche');
-let bookArray = [firstBook, secondBook]
 
-function Book(title, author, id) {
+let bookArray = [firstBook, secondBook];
+
+function Book(title, author) {
   this.title = title;
   this.author = author;
   this.id = generateId();   
-
 }
 
 Book.prototype = {
@@ -25,17 +26,14 @@ form.addEventListener("submit", function(e){
   let title = form.elements.title.value;
   let newBook = new Book (title, author);
   newBook.addBookToArray();
-})
-
-
-
+});
 
 
 const bookCollection = document.querySelector('#collection');
 
 const createBookElement = (book) => {
 
-  const bookContainer = document.querySelector('#book-collection');
+  const bookContainer = document.createElement('div');
   bookContainer.id = `${book.id}`;
   bookContainer.innerHTML = `
         <p>${book.title}</p>
@@ -46,13 +44,15 @@ const createBookElement = (book) => {
 }
 
 const displayBook = (book, bookCollection) => {
-  const newBookElement = createBookElement(book);
-  bookCollection.appendChild(newBookElement);
- };
+  const newBookElement = createBookElement(newBook);
+  bookCollection.appendChild(bookElement);
+};
 
- bookArray.forEach((book) => {
-   displayBook(book, bookCollection);
- });
+bookArray.forEach((book) => {
+  displayBook(book, bookCollection);
+});
+
+
 
 
 
