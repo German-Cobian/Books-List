@@ -11,7 +11,7 @@ class Book {
 // Display class
 class Display {
 // Add Book To List
-  addBookToList(book) {
+  static addBookToList(book) {
     const list = document.getElementById('book-list');
     // Create tr element
     const bookItem = document.createElement('div');
@@ -27,14 +27,14 @@ class Display {
   }
 
   // Delete Book
-  deleteBook(target) {
+  static deleteBook(target) {
     if (target.className === 'delete') {
       target.parentElement.parentElement.remove();
     }
   }
 
   // Clear Fields
-  clearFields() {
+  static clearFields() {
     document.getElementById('title').value = '';
     document.getElementById('author').value = '';
     document.getElementById('isbn').value = '';
@@ -58,9 +58,8 @@ class MylocalStorage {
   static displayBooks() {
     const books = MylocalStorage.getBooks();
     books.forEach((book) => {
-      const display = new Display();
       // Add book to Display
-      display.addBookToList(book);
+      Display.addBookToList(book);
     });
   }
 
@@ -91,24 +90,20 @@ document.getElementById('book-form').addEventListener('submit', (e) => {
   const isbn = document.getElementById('isbn').value;
   // Instantiate book
   const book = new Book(title, author, isbn);
-  // Instantiate Display
-  const display = new Display();
+
   // Add book to list
-  display.addBookToList(book);
+  Display.addBookToList(book);
   // add to local storage
   MylocalStorage.addBook(book);
   // Clear fields
-  display.clearFields();
+  Display.clearFields();
   e.preventDefault();
 });
 
 // Event Listener for delete
 document.getElementById('book-list').addEventListener('click', (e) => {
-  // Instantiate Display
-  const display = new Display();
-
   // Delete book
-  display.deleteBook(e.target);
+  Display.deleteBook(e.target);
 
   // Remove from localStorage
   MylocalStorage.removeBook(e.target.parentElement.previousElementSibling.textContent);
