@@ -1,61 +1,26 @@
-const generateId = () => (Math.random() + 1).toString(36).substring(7);
+// Book Constructor
 
-const firstBook = new Book('Crime and Punishment', 'Dostoyesky');
-const secondBook = new Book('Dawn', 'Nieszche');
-
-let bookArray = [firstBook, secondBook];
-
-function Book(title, author) {
+function Book(title, author, isbn) {
   this.title = title;
   this.author = author;
-  this.id = generateId();   
+  this.isbn = isbn;
 }
 
-Book.prototype = {
-  ...Book.prototype,
-  addBookToArray() {
-    bookArray.push(this)
-  }
-}
-
-let form = document.querySelector("#book-form");
-
-form.addEventListener("submit", function(e){
+// Event Listener for add book
+document.getElementById('book-form').addEventListener('submit', function(e){
+  // Get form values
+  const title = document.getElementById('title').value,
+        author = document.getElementById('author').value,
+        isbn = document.getElementById('isbn').value
+  // Instantiate book
+  const book = new Book(title, author, isbn);
+  // Instantiate Display
+  const display = new Display();
+  // Add book to list
+  display.addBookToList(book);
+  // add to local storage
+  addBook(book);
+  // Clear fields
+  display.clearFields();
   e.preventDefault();
-  let author = form.elements.author.value;
-  let title = form.elements.title.value;
-  let newBook = new Book (title, author);
-  newBook.addBookToArray();
 });
-
-
-const bookCollection = document.querySelector('#collection');
-
-const createBookElement = (book) => {
-
-  const bookContainer = document.createElement('div');
-  bookContainer.id = `${book.id}`;
-  bookContainer.innerHTML = `
-        <p>${book.title}</p>
-        <p>${book.author}</p>
-        <button type="submit" data-action="delete" data-book-id="${book.id}>Remove</button>
-        `;
-  return bookContainer;
-}
-
-const displayBook = (book, bookCollection) => {
-  const newBookElement = createBookElement(newBook);
-  bookCollection.appendChild(bookElement);
-};
-
-bookArray.forEach((book) => {
-  displayBook(book, bookCollection);
-});
-
-
-
-
-
-
-
-
