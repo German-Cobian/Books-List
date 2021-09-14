@@ -1,16 +1,18 @@
 // Book Constructor
 
-function Book(title, author, isbn) {
+class Book {
+  constructor(title, author, isbn) {
   this.title = title;
   this.author = author;
   this.isbn = isbn;
+  }
 }
 
-// Display Constructor
-function Display() {}
+// Display class
+class Display() {
 
 // Add Book To List
-Display.prototype.addBookToList = function (book) {
+  addBook(book) {
   const list = document.getElementById('book-list');
   // Create tr element
   const bookItem = document.createElement('div');
@@ -26,18 +28,20 @@ Display.prototype.addBookToList = function (book) {
 };
 
 // Delete Book
-Display.prototype.deleteBook = function (target) {
+deleteBook(target) {
   if (target.className === 'delete') {
     target.parentElement.parentElement.remove();
   }
 };
 
 // Clear Fields
-Display.prototype.clearFields = function () {
+clearFields = function () {
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
   document.getElementById('isbn').value = '';
 };
+}
+
 
 // Obtain books from local storage on page load
 function getBooks() {
