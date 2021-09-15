@@ -23,8 +23,8 @@ class Display {
     bookItem.innerHTML = `
     <p class="col-4 pt-3">${book.title}</p>
     <p class="col-4 pt-3">${book.author}</p>
-    <p class="col-2 pt-3">${book.isbn}</p>
-    <button class="col-2 my-1"><a href="#" class="delete text-dark">Remove</a></button>
+    <p class="col-1 pt-3">${book.isbn}</p>
+    <button class="col-2 my-1 mr-3"><a href="#" class="delete text-dark">Remove</a></button>
     `;
     list.appendChild(bookItem);
   }
