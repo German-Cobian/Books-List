@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', MylocalStorage.displayBooks);
 
 // Event Listener for add book
 document.getElementById('book-form').addEventListener('submit', (e) => {
+  const books = MylocalStorage.getBooks();
   // Get form values
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
@@ -93,13 +94,17 @@ document.getElementById('book-form').addEventListener('submit', (e) => {
   // Instantiate book
   const book = new Book(title, author, isbn);
 
-  // Add book to list
-  Display.addBookToList(book);
-  // add to local storage
-  MylocalStorage.addBook(book);
-  // Clear fields
-  Display.clearFields();
-  e.preventDefault();
+  if (books.find((x) => x.isbn === isbn)) {
+    alert('Please write another isbn');
+  } else {
+    // Add book to list
+    Display.addBookToList(book);
+    // add to local storage
+    MylocalStorage.addBook(book);
+    // Clear fields
+    Display.clearFields();
+    e.preventDefault();
+  }
 });
 
 // Event Listener for delete
