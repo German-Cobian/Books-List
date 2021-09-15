@@ -1,3 +1,11 @@
 body {
   padding: 2%;
 }
+
+.alternate:nth-child(odd) {
+  background-color: rgb(197, 193, 193);
+}
+
+.alternate:nth-child(even) {
+  background-color: rgb(243, 237, 237);
+}

@@ -17,14 +17,14 @@ class Display {
     const list = document.getElementById('book-list');
     // Create tr element
     const bookItem = document.createElement('li');
-    bookItem.className = 'd-flex justify-content-between';
+    bookItem.className = 'alternate d-flex justify-content-between';
     bookItem.id = `${book.id}`;
     // Insert columns
     bookItem.innerHTML = `
     <p class="col-4 pt-3">${book.title}</p>
     <p class="col-4 pt-3">${book.author}</p>
     <p class="col-2 pt-3">${book.isbn}</p>
-    <button class="col-2"><a href="#" class="delete">Remove</a></button>
+    <button class="col-2 my-1"><a href="#" class="delete text-dark">Remove</a></button>
     `;
     list.appendChild(bookItem);
   }
