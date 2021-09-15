@@ -15,24 +15,27 @@
     <div id= 'book-list'></div>
   </section>
   <br>
-    <form id="book-form">
-      <div>
-        <label for="title">Title</label>
-        <input type="text" id="title" required>
+  <h2 class="text-center">Add a new Book</h2>
+  <div class="row d-flex justify-content-center flex-nowrap pt-4">
+    <form id="book-form " >
+      <div class="pb-2">
+      
+        <input type="text" id="title"  placeholder="Title"  required>
       </div>
-      <div>
-        <label for="author">Author</label>
-        <input type="text" id="author" required>
+      <div class="pb-2">
+       
+        <input type="text" id="author" placeholder="Author" required>
       </div>
-      <div>
-        <label for="isbn">ISBN#</label>
-        <input type="text" id="isbn" required>
+
+      <div class="pb-2">
+        
+        <input type="text" id="isbn" placeholder="ISBN"  required>
       </div>
-      <div>
-        <input type="submit" value="Submit">
+      <div class=" float-right" >
+        <input type="submit" value="Submit" class="" >
       </div>
     </form>
- 
+  </div>
 
   <script src="index.js"></script>
 </body>
