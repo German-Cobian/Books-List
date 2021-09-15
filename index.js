@@ -31,7 +31,7 @@ class Display {
 
   // Delete Book
   static deleteBook(target) {
-    if (target.className === 'delete') {
+    if (target.classList.contains('delete')) {
       target.parentElement.parentElement.remove();
     }
   }
