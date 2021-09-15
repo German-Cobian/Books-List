@@ -16,14 +16,15 @@ class Display {
   static addBookToList(book) {
     const list = document.getElementById('book-list');
     // Create tr element
-    const bookItem = document.createElement('div');
+    const bookItem = document.createElement('li');
+    bookItem.className = 'd-flex justify-content-between';
     bookItem.id = `${book.id}`;
     // Insert columns
     bookItem.innerHTML = `
-    <p>${book.title}</p>
-    <p>${book.author}</p>
-    <p>${book.isbn}</p>
-    <button><a href="#" class="delete">Remove</a></button>
+    <p class="col-4 pt-3">${book.title}</p>
+    <p class="col-4 pt-3">${book.author}</p>
+    <p class="col-2 pt-3">${book.isbn}</p>
+    <button><a href="#" class="delete col-2">Remove</a></button>
     `;
     list.appendChild(bookItem);
   }
