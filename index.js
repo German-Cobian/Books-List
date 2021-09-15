@@ -16,21 +16,22 @@ class Display {
   static addBookToList(book) {
     const list = document.getElementById('book-list');
     // Create tr element
-    const bookItem = document.createElement('div');
+    const bookItem = document.createElement('li');
+    bookItem.className = 'alternate d-flex justify-content-between';
     bookItem.id = `${book.id}`;
     // Insert columns
     bookItem.innerHTML = `
-    <p>${book.title}</p>
-    <p>${book.author}</p>
-    <p>${book.isbn}</p>
-    <button><a href="#" class="delete">Remove</a></button>
+    <p class="col-4 pt-3">${book.title}</p>
+    <p class="col-4 pt-3">${book.author}</p>
+    <p class="col-1 pt-3">${book.isbn}</p>
+    <button class="col-2 my-1 mr-3"><a href="#" class="delete text-dark">Remove</a></button>
     `;
     list.appendChild(bookItem);
   }
 
   // Delete Book
   static deleteBook(target) {
-    if (target.className === 'delete') {
+    if (target.classList.contains('delete')) {
       target.parentElement.parentElement.remove();
     }
   }

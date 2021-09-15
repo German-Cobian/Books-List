@@ -5,33 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>Book List</title>
 </head>
 <body>
   <section class="container">
-    <h1>Awesome Books</h1>
+    <h1 class="text-center py-5">Awesome Books</h1>
   
-    <div id= 'book-list'></div>
+    <div id= 'book-list' class="border border-dark"></div>
   </section>
   <br>
-    <form id="book-form">
-      <div>
-        <label for="title">Title</label>
-        <input type="text" id="title" required>
+
+  <div class="text-center">_____________________________</div>
+
+  <h2 class="text-center mt-4">Add a new Book</h2>
+  <div class="row d-flex justify-content-center flex-nowrap pt-4">
+    <form id="book-form" >
+      <div class="pb-2">
+      
+        <input type="text" id="title"  placeholder="Title"  required>
       </div>
-      <div>
-        <label for="author">Author</label>
-        <input type="text" id="author" required>
+      <div class="pb-2">
+       
+        <input type="text" id="author" placeholder="Author" required>
       </div>
-      <div>
-        <label for="isbn">ISBN#</label>
-        <input type="text" id="isbn" required>
+
+      <div class="pb-2">
+        
+        <input type="text" id="isbn" placeholder="ISBN"  required>
       </div>
-      <div>
-        <input type="submit" value="Submit">
+      <div class=" float-right" >
+        <input type="submit" value="Submit" class="" >
       </div>
     </form>
- 
+  </div>
 
   <script src="index.js"></script>
 </body>
