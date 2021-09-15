@@ -1,108 +1,119 @@
+/* eslint max-classes-per-file: ["error", 5] */
+
 // Book Constructor
 
-function Book(title, author, isbn) {
-  this.title = title;
-  this.author = author;
-  this.isbn = isbn;
+class Book {
+  constructor(title, author, isbn) {
+    this.title = title;
+    this.author = author;
+    this.isbn = isbn;
+  }
 }
 
-// Display Constructor
-function Display() {}
-
+// Display class
+class Display {
 // Add Book To List
-Display.prototype.addBookToList = function (book) {
-  const list = document.getElementById('book-list');
-  // Create tr element
-  const bookItem = document.createElement('div');
-  bookItem.id = `${book.id}`;
-  // Insert columns
-  bookItem.innerHTML = `
+  static addBookToList(book) {
+    const list = document.getElementById('book-list');
+    // Create tr element
+    const bookItem = document.createElement('div');
+    bookItem.id = `${book.id}`;
+    // Insert columns
+    bookItem.innerHTML = `
     <p>${book.title}</p>
     <p>${book.author}</p>
     <p>${book.isbn}</p>
     <button><a href="#" class="delete">Remove</a></button>
-  `;
-  list.appendChild(bookItem);
-};
-
-// Delete Book
-Display.prototype.deleteBook = function (target) {
-  if (target.className === 'delete') {
-    target.parentElement.parentElement.remove();
+    `;
+    list.appendChild(bookItem);
   }
-};
 
-// Clear Fields
-Display.prototype.clearFields = function () {
-  document.getElementById('title').value = '';
-  document.getElementById('author').value = '';
-  document.getElementById('isbn').value = '';
-};
-
-// Obtain books from local storage on page load
-function getBooks() {
-  let books;
-  if (localStorage.getItem('books') === null) {
-    books = [];
-  } else {
-    books = JSON.parse(localStorage.getItem('books'));
+  // Delete Book
+  static deleteBook(target) {
+    if (target.className === 'delete') {
+      target.parentElement.parentElement.remove();
+    }
   }
-  return books;
+
+  // Clear Fields
+  static clearFields() {
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('isbn').value = '';
+  }
 }
-// Display books in local storage
-function displayBooks() {
-  const books = getBooks();
-  books.forEach((book) => {
-    const display = new Display();
-    // Add book to Display
-    display.addBookToList(book);
-  });
+
+// Class local storage
+
+class MylocalStorage {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+    return books;
+  }
+
+  // Display books in local storage
+  static displayBooks() {
+    const books = MylocalStorage.getBooks();
+    books.forEach((book) => {
+      // Add book to Display
+      Display.addBookToList(book);
+    });
+  }
+
+  // Add books to local storage
+  static addBook(book) {
+    const books = MylocalStorage.getBooks();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  // Remove books from local storage
+  static removeBook(isbn) {
+    let books = MylocalStorage.getBooks();
+    const filteredBooks = books.filter((book) => book.isbn !== isbn);
+    books = filteredBooks;
+    localStorage.setItem('books', JSON.stringify(books));
+  }
 }
-// Add books to local storage
-function addBook(book) {
-  const books = getBooks();
-  books.push(book);
-  localStorage.setItem('books', JSON.stringify(books));
-}
-// Remove books from local storage
-function removeBook(isbn) {
-  let books = getBooks();
-  const filteredBooks = books.filter((book) => book.isbn !== isbn);
-  books = filteredBooks;
-  localStorage.setItem('books', JSON.stringify(books));
-}
+
 // DOM load Event
-document.addEventListener('DOMContentLoaded', displayBooks);
+document.addEventListener('DOMContentLoaded', MylocalStorage.displayBooks);
 
 // Event Listener for add book
 document.getElementById('book-form').addEventListener('submit', (e) => {
+  const books = MylocalStorage.getBooks();
   // Get form values
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const isbn = document.getElementById('isbn').value;
   // Instantiate book
   const book = new Book(title, author, isbn);
-  // Instantiate Display
-  const display = new Display();
-  // Add book to list
-  display.addBookToList(book);
-  // add to local storage
-  addBook(book);
-  // Clear fields
-  display.clearFields();
-  e.preventDefault();
+
+  if (books.find((x) => x.isbn === isbn)) {
+    alert('Please write another isbn');
+  } else {
+    // Add book to list
+    Display.addBookToList(book);
+    // add to local storage
+    MylocalStorage.addBook(book);
+    // Clear fields
+    Display.clearFields();
+    e.preventDefault();
+  }
 });
 
 // Event Listener for delete
 document.getElementById('book-list').addEventListener('click', (e) => {
-  // Instantiate Display
-  const display = new Display();
-
   // Delete book
-  display.deleteBook(e.target);
+  Display.deleteBook(e.target);
 
   // Remove from localStorage
-  removeBook(e.target.parentElement.previousElementSibling.textContent);
+  MylocalStorage.removeBook(e.target.parentElement.previousElementSibling.textContent);
 
   e.preventDefault();
 });
