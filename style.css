@@ -9,3 +9,7 @@ body {
 .alternate:nth-child(even) {
   background-color: rgb(243, 237, 237);
 }
+
+.margin-content {
+  margin-left: 25%;
+}

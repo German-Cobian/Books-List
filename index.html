@@ -11,21 +11,24 @@
 <body>
 
   <header>
-    <nav>
-      <a href="#list" class="list">List</a>
-      <a href="#add-book" class="add-book">Add new</a>
-      <a href="#contact" class="contact">Contact</a>  
+    <nav class="d-flex flex-row justify-content-between border border-dark py-3 px-5">
+      <span >Awesome Books</span>
+      <div>
+        <a href="#list" class="list text-dark">List</a>
+        <a href="#add-book" class="add-book ml-5 text-dark">Add new</a>
+        <a href="#contact" class="contact ml-5 text-dark">Contact</a> 
+      </div>
     </nav>
   
   </header>
 
-  <div id="list">
-      <h1 class="text-center py-5">Awesome Books</h1>
+  <div id="list" class="my-5">
+      <h1 class="text-center pb-5">Awesome Books</h1>
     
       <div id= 'book-list' class="border border-dark"></div>
   </div>
 
-  <div id="add-book">
+  <div id="add-book" class="my-5">
     <h2 class="text-center mt-4">Add a new Book</h2>
     <div class="row d-flex justify-content-center flex-nowrap pt-4">
       <form id="book-form" >
@@ -49,23 +52,29 @@
     </div>
   </div>
 
-  <div id="contact">
-    <h2>Contact information</h2>
-    <h4>Do you have any questions or you just want to say "Hello"? <br> You can reach out to us!</h4>
+  <div id="contact" class="my-5">
+    <h2 class="text-center">Contact information</h2>
+    <h4 class="text-center">Do you have any questions or you just want to say "Hello"? <br> You can reach out to us!</h4>
     
-     <a href="https://github.com/Rocio01)">GitHub</a>
-     <a href="https://twitter.com/rugiada8801">Twitter</a>
-     <a href="https://www.linkedin.com/in/zulma-rocio-martinez">LinkedIn</a>
-     
-     
-     
-     <a href="https://github.com/German-Cobian">GitHub</a>
-     <a href="https://twitter.com/GermanCobian1">Twitter</a>
-     <a href="https://www.linkedin.com/in/german-cobian">LinkedIn</a>
-  </div>   
+    <div class="margin-content mt-5">
+      <p>Zulma Rocio</p>
+      <ul class="ml-5">
+        <li><a href="https://github.com/Rocio01)">GitHub</a></li>
+        <li><a href="https://twitter.com/rugiada8801">Twitter</a></li>
+        <li><a href="https://www.linkedin.com/in/zulma-rocio-martinez">LinkedIn</a></li>
+      </ul>
+      
+      <p>German Cobian</p>
+      <ul class="ml-5">
+        <li><a href="https://github.com/German-Cobian">GitHub</a></li>
+        <li><a href="https://twitter.com/GermanCobian1">Twitter</a></li>
+        <li><a href="https://www.linkedin.com/in/german-cobian">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
 
-  <footer>
-    <small>Copyright</small>
+  <footer class="d-flex flex-row justify-content-between border border-dark pt-3 px-5 mx-4 mb-3 fixed-bottom">
+    <p>Copyright Zulma Rocio / German Cobian</p>
   </footer>
 
   <script src="index.js"></script>
