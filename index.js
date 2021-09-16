@@ -1,4 +1,3 @@
-
 /* eslint max-classes-per-file: ["error", 5] */
 
 // Book Constructor
@@ -129,38 +128,35 @@ const listNav = document.querySelector('.list');
 const addBookNav = document.querySelector('.add-book');
 const contactNav = document.querySelector('.contact');
 
-listSection.style.display = "none";
-addBookSection.style.display = "block";
-contactSection.style.display = "none";
+listSection.style.display = 'none';
+addBookSection.style.display = 'block';
+contactSection.style.display = 'none';
 
-listNav.onclick = function() {
- listSection.style.display = "block";
- addBookSection.style.display = "none";
- contactSection.style.display = "none";
-} 
+listNav.onclick = function () {
+  listSection.style.display = 'block';
+  addBookSection.style.display = 'none';
+  contactSection.style.display = 'none';
+};
 
-addBookNav.onclick = function() {
- listSection.style.display = "none";
- addBookSection.style.display = "block";
- contactSection.style.display = "none";
-} 
+addBookNav.onclick = function () {
+  listSection.style.display = 'none';
+  addBookSection.style.display = 'block';
+  contactSection.style.display = 'none';
+};
 
-contactNav.onclick = function() {
- listSection.style.display = "none";
- addBookSection.style.display = "none";
- contactSection.style.display = "block";
-}
+contactNav.onclick = function () {
+  listSection.style.display = 'none';
+  addBookSection.style.display = 'none';
+  contactSection.style.display = 'block';
+};
 
-let DateTime = luxon.DateTime; 
-let localTime = DateTime.local();
-let timeL = localTime.toLocaleString(DateTime.DATETIME_FULL); 
+const { DateTime } = luxon;
+const localTime = DateTime.local();
+const timeL = localTime.toLocaleString(DateTime.DATETIME_FULL);
 
- const header = document.querySelector(".header-section");
- const dateDiv = document.createElement("div");
- dateDiv.className = "date-div float-right";
- dateDiv.innerHTML = timeL;
+const header = document.querySelector('.header-section');
+const dateDiv = document.createElement('div');
+dateDiv.className = 'date-div float-right';
+dateDiv.innerHTML = timeL;
 
- header.appendChild(dateDiv);
- 
-
-
+header.appendChild(dateDiv);
