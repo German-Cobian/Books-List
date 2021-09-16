@@ -1,3 +1,4 @@
+
 /* eslint max-classes-per-file: ["error", 5] */
 
 // Book Constructor
@@ -149,3 +150,21 @@ contactNav.onclick = function() {
  addBookSection.style.display = "none";
  contactSection.style.display = "block";
 }
+
+
+var DateTime = luxon.DateTime; 
+var localTime = DateTime.local();
+let timeL = localTime.toLocaleString(DateTime.DATETIME_FULL); 
+
+
+
+
+ const header = document.querySelector(".header-section");
+ const dateDiv = document.createElement("div");
+ dateDiv.className = "date-div float-right";
+ dateDiv.innerHTML = timeL;
+
+ header.appendChild(dateDiv);
+ 
+
+
