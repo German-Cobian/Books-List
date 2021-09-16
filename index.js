@@ -1,5 +1,4 @@
 /* eslint max-classes-per-file: ["error", 5] */
-
 // Book Constructor
 
 class Book {
@@ -150,7 +149,7 @@ contactNav.onclick = function () {
   contactSection.style.display = 'block';
 };
 
-const { DateTime } = luxon;
+const { DateTime } = luxon; // eslint-disable-line
 const localTime = DateTime.local();
 const timeL = localTime.toLocaleString(DateTime.DATETIME_FULL);
 
