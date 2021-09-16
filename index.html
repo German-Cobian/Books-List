@@ -9,36 +9,64 @@
   <title>Book List</title>
 </head>
 <body>
-  <section class="container">
-    <h1 class="text-center py-5">Awesome Books</h1>
+
+  <header>
+    <nav>
+      <a href="#list" class="list">List</a>
+      <a href="#add-book" class="add-book">Add new</a>
+      <a href="#contact" class="contact">Contact</a>  
+    </nav>
   
-    <div id= 'book-list' class="border border-dark"></div>
-  </section>
-  <br>
+  </header>
 
-  <div class="text-center">_____________________________</div>
-
-  <h2 class="text-center mt-4">Add a new Book</h2>
-  <div class="row d-flex justify-content-center flex-nowrap pt-4">
-    <form id="book-form" >
-      <div class="pb-2">
-      
-        <input type="text" id="title"  placeholder="Title"  required>
-      </div>
-      <div class="pb-2">
-       
-        <input type="text" id="author" placeholder="Author" required>
-      </div>
-
-      <div class="pb-2">
-        
-        <input type="text" id="isbn" placeholder="ISBN"  required>
-      </div>
-      <div class=" float-right" >
-        <input type="submit" value="Submit" class="" >
-      </div>
-    </form>
+  <div id="list">
+      <h1 class="text-center py-5">Awesome Books</h1>
+    
+      <div id= 'book-list' class="border border-dark"></div>
   </div>
+
+  <div id="add-book">
+    <h2 class="text-center mt-4">Add a new Book</h2>
+    <div class="row d-flex justify-content-center flex-nowrap pt-4">
+      <form id="book-form" >
+        <div class="pb-2">
+        
+          <input type="text" id="title"  placeholder="Title"  required>
+        </div>
+        <div class="pb-2">
+        
+          <input type="text" id="author" placeholder="Author" required>
+        </div>
+
+        <div class="pb-2">
+          
+          <input type="text" id="isbn" placeholder="ISBN"  required>
+        </div>
+        <div class=" float-right" >
+          <input type="submit" value="Submit" class="" >
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="contact">
+    <h2>Contact information</h2>
+    <h4>Do you have any questions or you just want to say "Hello"? <br> You can reach out to us!</h4>
+    
+     <a href="https://github.com/Rocio01)">GitHub</a>
+     <a href="https://twitter.com/rugiada8801">Twitter</a>
+     <a href="https://www.linkedin.com/in/zulma-rocio-martinez">LinkedIn</a>
+     
+     
+     
+     <a href="https://github.com/German-Cobian">GitHub</a>
+     <a href="https://twitter.com/GermanCobian1">Twitter</a>
+     <a href="https://www.linkedin.com/in/german-cobian">LinkedIn</a>
+  </div>   
+
+  <footer>
+    <small>Copyright</small>
+  </footer>
 
   <script src="index.js"></script>
 </body>
