@@ -151,13 +151,9 @@ contactNav.onclick = function() {
  contactSection.style.display = "block";
 }
 
-
-var DateTime = luxon.DateTime; 
-var localTime = DateTime.local();
+let DateTime = luxon.DateTime; 
+let localTime = DateTime.local();
 let timeL = localTime.toLocaleString(DateTime.DATETIME_FULL); 
-
-
-
 
  const header = document.querySelector(".header-section");
  const dateDiv = document.createElement("div");
