@@ -149,6 +149,25 @@ contactNav.onclick = function () {
   contactSection.style.display = 'block';
 };
 
+/* Antother way of handling the single page app functionality is with a css class of hide that 
+can be toggled:
+const navList = document.querySelector('.list');
+const navAddNew = document.querySelector('.add-new');
+const navContact = document.querySelector('.contact');
+
+const listSection = document.querySelector('#list');
+const AddNewSection = document.querySelector('#add-new');
+const contactSection = document.querySelector('#contact');
+
+listSection.classList.remove('hide');
+navList.addEventListener('click', () => {
+  listSection.classList.remove('hide');
+  AddNewSection.classList.add('hide');
+  contactSection.classList.add('hide');
+});
+
+And so on..*/
+
 const { DateTime } = luxon; // eslint-disable-line
 const localTime = DateTime.local();
 const timeL = localTime.toLocaleString(DateTime.DATETIME_FULL);
