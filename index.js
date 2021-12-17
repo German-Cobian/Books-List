@@ -93,7 +93,7 @@ document.getElementById('book-form').addEventListener('submit', (e) => {
   const isbn = document.getElementById('isbn').value;
   // Instantiate book
   const book = new Book(title, author, isbn);
-
+  // Check that isbn is unique
   if (books.find((x) => x.isbn === isbn)) {
     alert('Please write another isbn');
   } else {
