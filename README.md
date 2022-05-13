@@ -38,7 +38,7 @@ This project is an exercise in Javascript DOM manipulation, objects and classes.
 👤 **Rocio Martinez** 
 - Github: [@Rocio01](https://github.com/Rocio01) 
 - Twitter: [@rugiada8801](https://twitter.com/rugiada8801) 
-- Linkedin: [zulma-rocio-martinez](https://www.linkedin.com/in/zulma-rocio-martinez
+- Linkedin: [zulma-rocio-martinez](https://www.linkedin.com/in/zulma-rocio-martinez)
 
 
 👤 **German Cobian**
@@ -63,4 +63,4 @@ Guidelines for this project were supplied by [Microverse](https://github.com/mic
 
 ## 📝 License
 
-[MIT licensed](https://github.com/German-Cobian/Books-List/blob/develop/LICENSE).
+[MIT](https://github.com/German-Cobian/Books-List/blob/develop/LICENSE) licensed.
