@@ -6,11 +6,11 @@ A Javascript single-page app that allows the user to input the titles of books i
 
 The books are displayed in a listing, and can be removed from  as they are read or discarded. 
 
-![Book list](/assets/Add-book.png?raw=true "Book list")
+![Book list](/assets/Book-list.png?raw=true "Book list")
 
 Additionally, there is a contact page that gives info on the apps authors.
 
-![Contact info](/assets/Add-book.png?raw=true "Contact info")
+![Contact info](/assets/Contact-info.png?raw=true "Contact info")
 
 This project is an exercise in Javascript DOM manipulation, objects and classes.
 
