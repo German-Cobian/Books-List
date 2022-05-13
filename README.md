@@ -1,22 +1,37 @@
-# Awesome-Books
+# Books-List
 
-> An app that allows the user to input the titles of books in his/her library along with the name of the author. The books can be removed from the library as they are read or discarded. This project is an exercise in Javascript DOM manipulation, objects and classes.
+A Javascript single-page app that allows the user to input the titles of books in his/her library along with the name of the author. 
+
+![Add book](/assets/Add-book.png?raw=true "Add book")
+
+The books are displayed in a listing, and can be removed from  as they are read or discarded. 
+
+![Book list](/assets/Add-book.png?raw=true "Book list")
+
+Additionally, there is a contact page that gives info on the apps authors.
+
+![Contact info](/assets/Add-book.png?raw=true "Contact info")
+
+This project is an exercise in Javascript DOM manipulation, objects and classes.
+
 
 ### Setup and Install
 
 * Open your terminal - Windows: `Win + R`, then type `cmd` | Mac: `Command + space`, then type `Terminal`
 * Navigate to a directory of your choosing using the `cd` command
-* Run this command in your OS terminal: `git clone git@github.com:German-Cobian/Activities-List.git` to get a copy of the project
+* Run this command in your OS terminal: `git clone git@github.com:German-Cobian/Books-List.git` to get a copy of the project
 * Navigate to the project's directory using the `cd` command
 * Open the index.html file in your web browser
 * Fill up the book information on the form as requested.
 
 ## Built With
 
-- Semantic HTML
-- JavaScript
-- Github workflow
-- Linters(Lighthouse, stylelint, Webhint, eslint)
+* HTML
+* CSS
+* Bootstrap
+* JavaScript
+* Github workflow
+* Linters(Lighthouse, stylelint, Webhint, eslint)
 
 ## Author
 
@@ -36,7 +51,7 @@
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/German-Cobian/Books-List/issues).
 
 ## Show your support
 
@@ -44,9 +59,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Microverse
-- Code reviewer(s).
+* Microverse
 
 ## 📝 License
 
-[MIT licensed](./LICENSE).
+[MIT licensed](https://github.com/German-Cobian/Books-List/blob/develop/LICENSE).
