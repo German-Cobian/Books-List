@@ -59,7 +59,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-* Microverse
+Guidelines for this project were supplied by [Microverse](https://github.com/microverseinc/curriculum-javascript/tree/main/books)
 
 ## 📝 License
 
